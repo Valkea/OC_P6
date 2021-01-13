@@ -1,34 +1,125 @@
 body {
-	height: 100%;	
-	margin:0px;
-}
-
-div {
-	background-color: rgb(0,0,0);
-	color: rgb(255,255,255);
-	border: 1px solid rgb(0,255,0);
+  height: 100%;
+  margin: 0px;
+  background-color: #000;
+  color: white;
 }
 
 .main_column {
-	width: 600px;
-	background-color: rgb(0,0,255);
-	padding: 5px;
-	margin:auto;
+  width: 900px;
+  margin: auto;
+}
+@media screen and (max-width: 500px) {
+  .main_column {
+    width: 100%;
+  }
+}
+
+/* --- HEAD --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.header--yellow_border {
+  border: 2px solid Yellow;
+}
+
+.logo {
+  background-image: url("../medias/logo.png");
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: 139.06px 100px;
+  width: 139.06px;
+  height: 100px;
+}
+
+.menu {
+  flex: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lime;
+  padding: 5px;
+}
+
+.menu__space {
+  width: 25px;
+}
+
+/* --- BEST FILM --- */
+.poster {
+  margin: 10px 0 10px 0;
+  background-image: url("https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_UX182_CR0,0,182,268_AL_.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+  height: 400px;
+}
+@media screen and (max-width: 500px) {
+  .poster {
+    width: 100%;
+  }
+}
+
+.poster--yellow_border {
+  border: 2px solid Yellow;
+}
+
+/* --- CATEGORIES --- */
+.category {
+  margin: 10px 0 10px 0;
+}
+
+.category__title {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.category--green_border {
+  border: 2px solid lime;
+}
+
+.category--orange_border {
+  border: 2px solid #ff7000;
 }
 
 .carrousel {
-	#flex-direction: row; 
-	overflow-x: scroll;
+  display: flex;
 }
 
 .carrousel__scroll {
-	display: flex;
-	min-width:1050px;
-	background-color: rgb(0,125,255);
+  overflow-x: scroll;
+  flex: 1;
+}
+
+.carrousel__scroll_content {
+  display: flex;
+  min-width: 1400px;
+}
+
+.carrousel__left_arrow {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.carrousel__right_arrow, .carrousel__left_arrow {
+  background-image: url("../medias/arrow-right-white.png");
+  background-repeat: no-repeat;
+  background-size: 50px 150px;
+  width: 50px;
+  height: 150px;
 }
 
 .carrousel__vignette {
-	height: 150px;
-	width: 150px;
-	background-color: rgb(125,125,0);
+  height: 150px;
+  width: 200px;
+  background-image: url("https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_UX182_CR0,0,182,268_AL_.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+/*# sourceMappingURL=style.css.map */

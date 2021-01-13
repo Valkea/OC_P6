@@ -1,0 +1,179 @@
+$arrow_width : 50px;
+
+$vignette_width : 200px;
+$vignette_height : 150px;
+$vignette_num : 7;
+
+$arrow_height : $vignette_height;
+$main_column_width : $vignette_width*4 + $arrow_width*2;
+
+
+$header_height : 100px;
+
+$logo_height : $header_height;
+$logo_width : $logo_height*1.3906;
+
+
+$breakpoints : (
+    mobile: 500px,
+);
+
+@mixin mobile-only {
+  @media screen and (max-width: map-get($breakpoints, mobile)){
+      @content;
+  }
+}
+
+body
+{
+	height: 100%;	
+	margin:0px;
+	background-color: #000;
+	color: rgb(255,255,255);
+}
+
+.main_column
+{
+	width: $main_column_width;
+	margin:auto;
+	@include mobile-only{
+		width: 100%;
+	}
+}
+
+/* --- HEAD --- */
+
+.header
+{
+	display:flex;
+	justify-content: space-between;
+	height:$header_height;
+}
+
+.header--yellow_border
+{
+	border: 2px solid Yellow;
+}
+
+.logo
+{
+	background-image: url("../medias/logo.png");
+	background-repeat: no-repeat;
+	background-position: top left;
+	background-size: $logo_width $logo_height;
+	width: $logo_width;
+	height: $logo_height;
+}
+
+.menu
+{
+	flex: auto;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid rgb(0,255,0);
+	padding:5px;
+}
+
+.menu__space
+{
+	width:25px;
+}
+
+/* --- BEST FILM --- */
+
+.poster
+{
+	margin: 10px 0 10px 0;
+	background-image: url("https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_UX182_CR0,0,182,268_AL_.jpg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: right;
+	height:400px;
+	@include mobile-only{
+		width: 100%;
+	}
+}
+
+.poster--yellow_border
+{
+	border: 2px solid Yellow;
+}
+
+/* --- CATEGORIES --- */
+
+.category
+{
+	margin: 10px 0 10px 0;
+}
+
+.category__title
+{
+	font-size:1.3rem;
+	text-align:center;
+}
+
+.category--green_border
+{
+	border: 2px solid rgb(0,255,0);
+}
+
+.category--orange_border
+{
+	border: 2px solid rgb(255,112,0);
+}
+
+.carrousel
+{
+	display:flex;
+}
+
+.carrousel__scroll
+{
+	overflow-x: scroll;
+	flex:1;
+}
+
+.carrousel__scroll_content
+{
+	display: flex;
+	min-width: ($vignette_width * $vignette_num)
+}
+
+
+%img-hor {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+
+%right_arrow
+{
+	// border: 1px solid Red;
+	background-image: url("../medias/arrow-right-white.png");
+	background-repeat: no-repeat;
+	background-size: $arrow_width $vignette_height;
+	width: $arrow_width;
+	height: $vignette_width - 50;
+}
+
+.carrousel__left_arrow
+{
+	@extend %right_arrow;
+	@extend %img-hor;
+}
+.carrousel__right_arrow
+{
+	@extend %right_arrow;
+}
+
+.carrousel__vignette
+{
+	height: $vignette_height;
+	width: $vignette_width;
+	background-image: url("https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_UX182_CR0,0,182,268_AL_.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
