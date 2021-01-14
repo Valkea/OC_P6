@@ -26,4 +26,22 @@ window.onload = function() {
 	    modal.style.display = "none";
 	  }
 	}
+
+	modal.style.display = "block"; // TODO tmp
 }
+
+// --- INFOS ---
+//
+// document.body.style.backgroundImage = "url('img_tree.png')";
+// document.getElementById("myImg").src = "hackanm.gif";
+// modal-title
+// modal-genre
+// modal-date
+// modal-rated
+// modal-imdb-score
+// modal-director
+// modal-actors
+// modal-duration
+// modal-country
+// modal-results
+// modal-summary

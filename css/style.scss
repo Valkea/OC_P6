@@ -191,27 +191,79 @@ body
   	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.modal__content
-{
-  	background-color: #ff0000;
-  	margin: 15% auto; /* 15% from the top and centered */
-  	padding: 20px;
-  	border: 1px solid #888;
-  	width: 80%; /* Could be more or less, depending on screen size */
-}
-
 .modal__close
 {
   	color: #aaa;
   	float: right;
   	font-size: 28px;
   	font-weight: bold;
+
+	position: absolute;
+	right:20px;
 }
 
 .modal__close:hover,
 .modal__close:focus
 {
-  	color: black;
+  	color: white;
   	text-decoration: none;
   	cursor: pointer;
+}
+
+.modal__content
+{
+  	background-color: #000;
+
+  	margin: 15% auto; /* 15% from the top and centered */
+  	padding: 20px;
+  	border: 1px solid #888;
+  	width: 80%; /* Could be more or less, depending on screen size */
+	display:flex;
+	flex-wrap: wrap;
+	position: relative;
+}
+
+.modal__image // 182 x 268
+{
+	border: 1px solid Yellow;
+	flex: 0 0;
+}
+
+.modal__infos
+{
+	border: 1px solid Cyan;
+	flex:1 1;
+	min-width:200px;
+}
+
+.modal__ratings
+{
+	border: 1px solid White;
+
+}
+
+.modal__ratings--desktop
+{
+	display:block;
+	@include mobile-only{
+		display:none;
+	}
+
+}
+
+.modal__ratings--mobile
+{
+	display:none;
+	@include mobile-only{
+		display:block;
+	}
+
+}
+
+.gradient
+{
+  background: -webkit-linear-gradient(to bottom right, black, rgba(0,0,0,0));
+  background: -moz-linear-gradient(to bottom right, black, rgba(0,0,0,0));
+  background: -o-linear-gradient(to bottom right, black, rgba(0,0,0,0));
+  background: linear-gradient(to left, white, rgba(0,0,0,0));
 }
