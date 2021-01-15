@@ -176,6 +176,12 @@ body {
   border: 1px solid Cyan;
   flex: 1 1;
   min-width: 200px;
+  padding-left: 20px;
+}
+@media screen and (max-width: 500px) {
+  .modal__infos {
+    padding: 0;
+  }
 }
 
 .modal__ratings {

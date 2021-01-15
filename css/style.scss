@@ -234,6 +234,10 @@ body
 	border: 1px solid Cyan;
 	flex:1 1;
 	min-width:200px;
+	padding-left:20px;
+	@include mobile-only{
+		padding: 0;
+	}
 }
 
 .modal__ratings
