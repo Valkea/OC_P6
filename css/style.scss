@@ -85,7 +85,7 @@ body
 .poster
 {
 	margin: 10px 0 10px 0;
-	background-image: url("https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_UX182_CR0,0,182,268_AL_.jpg");
+	background-image: url("../medias/default-poster.jpg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: right;
@@ -104,7 +104,7 @@ body
 	margin: 10px 0 10px 0;
 }
 
-.category__title
+.category > h2
 {
 	font-size:1.3rem;
 	text-align:center;
@@ -170,7 +170,7 @@ body
 {
 	height: $vignette_height;
 	width: $vignette_width;
-	background-image: url("https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_UX182_CR0,0,182,268_AL_.jpg");
+	background-image: url("../medias/default-poster.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
   	cursor: pointer;

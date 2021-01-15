@@ -8,33 +8,34 @@
 		<script src="js/script.js"></script>
 	</head>
 	<body>
-		<section id="modal-film" class="modal">
-  			<article class="modal__content">
+		<article id="modal-film" class="modal">
+  			<div class="modal__content">
     				<span class="modal__close">&times;</span>
 				<div class="modal__image">
-					<img id="modal-image" src="https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_UX182_CR0,0,182,268_AL_.jpg" alt="Affiche du film">
+					<img id="modal-image" src="medias/default-poster.jpg" alt="Affiche du film">
 					<div class="modal__ratings modal__ratings--desktop">
-						<p class="modal__imdb_score">Score Imdb : <span id="modal-imdb_score">X</span></p>
+						<p class="modal__imdb_score">Score Imdb : <span id="modal-imdb_score">.</span></p>
 					</div>
 				</div>
+				<h2>Titre W3C...</h2>
 				<div class="modal__infos">
 					<p class="modal__title"><span id="modal-title">...</span></p>
-   					<p class="modal__genres">Genres : <span id="modal-genres">X</span></p>
-   					<p class="modal__date_published">Date de sortie : <span id="modal-date_published">X</span></p>
-   					<p class="modal__directors">Réalisateur : <span id="modal-directors">X</span></p>
-   					<p class="modal__actors">Acteurs : <span id="modal-actors">X</span></p>
-   					<p class="modal__duration">Durée : <span id="modal-duration">X</span></p>
-					<p class="modal__rated">Classification : <span id="modal-rated">X</span></p>
-   					<p class="modal__countries">Nationalité : <span id="modal-countries">X</span></p>
-   					<p class="modal__bo_results">Résultats BO : <span id="modal-worldwide_gross_income">X</span></p>
-   					<p class="modal__long_description">Résumé : <span id="modal-long_description">X</span></p>
+   					<p class="modal__genres">Genres : <span id="modal-genres">.</span></p>
+   					<p class="modal__date_published">Date de sortie : <span id="modal-date_published">.</span></p>
+   					<p class="modal__directors">Réalisateur : <span id="modal-directors">.</span></p>
+   					<p class="modal__actors">Acteurs : <span id="modal-actors">.</span></p>
+   					<p class="modal__duration">Durée : <span id="modal-duration">.</span></p>
+					<p class="modal__rated">Classification : <span id="modal-rated">.</span></p>
+   					<p class="modal__countries">Nationalité : <span id="modal-countries">.</span></p>
+   					<p class="modal__bo_results">Résultats BO : <span id="modal-worldwide_gross_income">.</span></p>
+   					<p class="modal__long_description">Résumé : <span id="modal-long_description">.</span></p>
 					<div class="modal__ratings modal__ratings--mobile">
-						<p class="modal__imdb_score">Score Imdb : <span id="modal-imdb_score--mobile">X</span></p>
+						<p class="modal__imdb_score">Score Imdb : <span id="modal-imdb_score--mobile">.</span></p>
 					</div>
     				</div>
 
-  			</article>
-		</section>
+  			</div>
+		</article>
 
 		<main class="main_column">
 			<header class="header header--yellow_border">
@@ -46,16 +47,16 @@
 				</nav>
 			</header>
 			<section class="poster poster--yellow_border">
-				<div class="poster__title">Meilleur Film</div>
+				<h2 class="poster__title">Meilleur Film</h2>
 				<div class="poster__desc">desc</div>
 				<input id="modal__open" type="button" value="Plus de détails..."/>
 			</section>
 			<section class="category category--green_border">
-				<div class="category__title">Les films les mieux notés</div>
+				<h2>Les films les mieux notés</h2>
 				<div class="carrousel">
 					<span class="carrousel__left_arrow"></span>
-					<span class="carrousel__scroll">
-						<span class="carrousel__scroll_content">
+					<div class="carrousel__scroll">
+						<div class="carrousel__scroll_content">
 							<div class="carrousel__vignette" id="cat_0_0">Cadre 1</div>
 							<div class="carrousel__vignette" id="cat_0_1">Cadre 2</div>
 							<div class="carrousel__vignette" id="cat_0_2">Cadre 3</div>
@@ -63,17 +64,17 @@
 							<div class="carrousel__vignette" id="cat_0_4">Cadre 5</div>
 							<div class="carrousel__vignette" id="cat_0_5">Cadre 6</div>
 							<div class="carrousel__vignette" id="cat_0_6">Cadre 7</div>
-						</span>
-					</span>
+						</div>
+					</div>
 					<span class="carrousel__right_arrow"></span>
 				</div>
 			</section>
 			<section class="category category--orange_border">
-				<div class="category__title">Catégorie "Sci-Fi"</div>
+				<h2>Catégorie "Sci-Fi"</h2>
 				<div class="carrousel">
 					<span class="carrousel__left_arrow"></span>
-					<span class="carrousel__scroll">
-						<span class="carrousel__scroll_content">
+					<div class="carrousel__scroll">
+						<div class="carrousel__scroll_content">
 							<div class="carrousel__vignette" id="cat_1_0">Cadre 1</div>
 							<div class="carrousel__vignette" id="cat_1_1">Cadre 2</div>
 							<div class="carrousel__vignette" id="cat_1_2">Cadre 3</div>
@@ -81,17 +82,17 @@
 							<div class="carrousel__vignette" id="cat_1_4">Cadre 5</div>
 							<div class="carrousel__vignette" id="cat_1_5">Cadre 6</div>
 							<div class="carrousel__vignette" id="cat_1_6">Cadre 7</div>
-						</span>
-					</span>
+						</div>
+					</div>
 					<span class="carrousel__right_arrow"></span>
 				</div>
 			</section>
 			<section class="category category--orange_border">
-				<div class="category__title">Catégorie "Mystery"</div>
+				<h2>Catégorie "Mystery"</h2>
 				<div class="carrousel">
 					<span class="carrousel__left_arrow"></span>
-					<span class="carrousel__scroll">
-						<span class="carrousel__scroll_content">
+					<div class="carrousel__scroll">
+						<div class="carrousel__scroll_content">
 							<div class="carrousel__vignette" id="cat_2_0">Cadre 1</div>
 							<div class="carrousel__vignette" id="cat_2_1">Cadre 2</div>
 							<div class="carrousel__vignette" id="cat_2_2">Cadre 3</div>
@@ -99,17 +100,17 @@
 							<div class="carrousel__vignette" id="cat_2_4">Cadre 5</div>
 							<div class="carrousel__vignette" id="cat_2_5">Cadre 6</div>
 							<div class="carrousel__vignette" id="cat_2_6">Cadre 7</div>
-						</span>
-					</span>
+						</div>
+					</div>
 					<span class="carrousel__right_arrow"></span>
 				</div>
 			</section>
 			<section class="category category--orange_border">
-				<div class="category__title">Catégorie "Animation"</div>
+				<h2>Catégorie "Animation"</h2>
 				<div class="carrousel">
 					<span class="carrousel__left_arrow"></span>
-					<span class="carrousel__scroll">
-						<span class="carrousel__scroll_content">
+					<div class="carrousel__scroll">
+						<div class="carrousel__scroll_content">
 							<div class="carrousel__vignette" id="cat_3_0">Cadre 1</div>
 							<div class="carrousel__vignette" id="cat_3_1">Cadre 2</div>
 							<div class="carrousel__vignette" id="cat_3_2">Cadre 3</div>
@@ -117,8 +118,8 @@
 							<div class="carrousel__vignette" id="cat_3_4">Cadre 5</div>
 							<div class="carrousel__vignette" id="cat_3_5">Cadre 6</div>
 							<div class="carrousel__vignette" id="cat_3_6">Cadre 7</div>
-						</span>
-					</span>
+						</div>
+					</div>
 					<span class="carrousel__right_arrow"></span>
 				</div>
 			</section>
