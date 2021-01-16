@@ -81,6 +81,7 @@ function open_vignette(ref) {
 	const regExpr = /(cat_[\d+])_([\d+])*/
 	const match = ref.match(regExpr);
 
+	console.log("TEST:", data[match[1]][match[2]]['id'])
 	get_modal_film(data[match[1]][match[2]]['id'])
 }
 
@@ -198,16 +199,13 @@ window.onload = function() {
 
 	// --- Set onclick actions to open the modals ---
 	let elems = document.getElementsByTagName("*");
-	// let vignettes_btns = [];
 	for (let i=0, m=elems.length; i<m; i++) {
-    		if (elems[i].id && elems[i].id.indexOf("cat_") != -1) {
-			// vignettes_btns.push(elems[i]);
+    		if (elems[i].id && elems[i].id.startsWith("cat_")) {
 			elems[i].onclick = function(){
 				open_vignette(elems[i].id);
 			}
     		}
 	}
-	// console.log(vignettes_btns);
 	
 	// --- Set Best film btn ---
 	// document.getElementById("modal__open").onclick = function() {
@@ -227,6 +225,20 @@ window.onload = function() {
 	window.onclick = function(event) {
 		if (event.target == modal) {
 	    		modal.style.display = "none";
+		}
+	}
+
+	// --- scroll buttons ---
+	for(let i = 0; i <= 3; i++){
+	
+		document.getElementById('right_cat_'+i).onclick = function(){
+			size = document.getElementsByClassName("carrousel__vignette")[0].offsetWidth;
+			document.getElementById('scroll_cat_'+i).scrollLeft += size+2;
+		}
+
+		document.getElementById('left_cat_'+i).onclick = function(){
+			size = document.getElementsByClassName("carrousel__vignette")[0].offsetWidth;
+			document.getElementById('scroll_cat_'+i).scrollLeft -= size+2;
 		}
 	}
 
