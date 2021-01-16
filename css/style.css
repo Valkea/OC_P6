@@ -120,6 +120,11 @@ body {
   display: flex;
   min-width: 1400px;
 }
+@media screen and (max-width: 500px) {
+  .carrousel__scroll_content {
+    min-width: 700px;
+  }
+}
 
 .carrousel__left_arrow {
   -moz-transform: scaleX(-1);
@@ -137,12 +142,17 @@ body {
 }
 
 .carrousel__vignette {
-  height: 150px;
-  width: 200px;
   background-image: url("../medias/default-poster.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   cursor: pointer;
+  height: 150px;
+  width: 200px;
+}
+@media screen and (max-width: 500px) {
+  .carrousel__vignette {
+    width: 100px;
+  }
 }
 
 /* --- MODALS --- */

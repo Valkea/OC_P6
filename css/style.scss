@@ -7,7 +7,6 @@ $vignette_num : 7;
 $arrow_height : $vignette_height;
 $main_column_width : $vignette_width*4 + $arrow_width*2;
 
-
 $header_height : 100px;
 
 $logo_height : $header_height;
@@ -125,6 +124,7 @@ body
 		font-size:2rem;
 	}
 }
+
 .poster__button
 {
   	cursor: pointer;
@@ -173,9 +173,11 @@ body
 .carrousel__scroll_content
 {
 	display: flex;
-	min-width: ($vignette_width * $vignette_num)
+	min-width: ($vignette_width * $vignette_num);
+	@include mobile-only{
+		min-width: ($vignette_width/2 * $vignette_num);
+	}
 }
-
 
 %img-hor {
     -moz-transform: scaleX(-1);
@@ -184,7 +186,6 @@ body
     transform: scaleX(-1);
 }
 
-
 %right_arrow
 {
 	// border: 1px solid Red;
@@ -192,7 +193,7 @@ body
 	background-repeat: no-repeat;
 	background-size: $arrow_width $vignette_height;
 	width: $arrow_width;
-	height: $vignette_width - 50;
+	height: $vignette_height;
 }
 
 .carrousel__left_arrow
@@ -207,12 +208,17 @@ body
 
 .carrousel__vignette
 {
-	height: $vignette_height;
-	width: $vignette_width;
 	background-image: url("../medias/default-poster.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
   	cursor: pointer;
+
+	height: $vignette_height;
+	width: $vignette_width;
+
+	@include mobile-only{
+		width: $vignette_width/2;
+	}
 }
 
 /* --- MODALS --- */
