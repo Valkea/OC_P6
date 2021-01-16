@@ -82,19 +82,58 @@ body
 
 /* --- BEST FILM --- */
 
+%poster_background_opacity
+{
+	background: rgba(0, 0, 0, 0.6);
+}
+
 .poster
 {
 	margin: 10px 0 10px 0;
 	background-image: url("../medias/default-poster.jpg");
 	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: right;
+	background-size: cover;
+	background-position: top;
 	height:400px;
+
+	display:flex;
 }
 
 .poster--yellow_border
 {
 	border: 2px solid Yellow;
+}
+
+.poster__infos
+{
+	flex: 2;
+	padding-left:20px;
+	@extend %poster_background_opacity;
+}
+
+.poster img
+{
+	flex: 3;
+	object-fit: contain;
+	@extend %poster_background_opacity;
+}
+
+.poster__title
+{
+	font-size:3rem;
+	@include mobile-only{
+		font-size:2rem;
+	}
+}
+.poster__button
+{
+  	cursor: pointer;
+	margin:20px 0 0 0;
+}
+
+.poster_button-play
+{
+
 }
 
 /* --- CATEGORIES --- */
@@ -106,7 +145,6 @@ body
 
 .category > h2
 {
-	font-size:1.3rem;
 	text-align:center;
 }
 

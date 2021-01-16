@@ -25,7 +25,6 @@ function get_best_cat(num, cat){
 const data = {'cat_0':[], 'cat_1':[], 'cat_2':[], 'cat_3':[]}
 
 function save_data(num, cat, fetches, callback){
-	console.log("save_data:", fetches);
 
 	data[cat] = [];
 	let count = 0;
@@ -38,7 +37,6 @@ function save_data(num, cat, fetches, callback){
 		}
 	}
 
-	console.log("Et la ?", data[cat], data[cat].length);
 	if(cat == 'cat_0'){
 		fill_tops()	
 	} else {
@@ -50,7 +48,6 @@ function fill_category(cat){
 	
 	let index = 0;
 	for(result of data[cat]){
-		console.log("result:", result);
 		document.getElementById(cat+"_"+index).style.backgroundImage="url("+result['image_url']+")";
 		document.getElementById(cat+"_"+index).innerHTML= result['title'];
 		index ++;
@@ -58,20 +55,21 @@ function fill_category(cat){
 }
 
 function fill_tops(){
+
 	data['first'] = data['cat_0'].shift()
 	fill_category( 'cat_0' )
 
 	first_id = data['first']['id']
-	// document.getElementsByClassName("poster")[0].style.backgroundImage="url("+first['image_url']+")";
 	fetchOne(api_url+"titles/"+first_id, collect_display_first);
 }
 
 // --- FIRST / TOP ---
 
 function collect_display_first(json){
-	console.log(json);
 	
 	document.getElementsByClassName("poster")[0].style.backgroundImage="url("+json['image_url']+")";
+	document.getElementsByClassName("poster__image")[0].src= json['image_url'];
+
 	document.getElementsByClassName("poster__title")[0].innerHTML=json['title'];
 	document.getElementsByClassName("poster__desc")[0].innerHTML=json['description'];
 }
@@ -79,8 +77,10 @@ function collect_display_first(json){
 // --- VIGNETTES ---
 
 function open_vignette(ref) {
+
 	const regExpr = /(cat_[\d+])_([\d+])*/
 	const match = ref.match(regExpr);
+
 	get_modal_film(data[match[1]][match[2]]['id'])
 }
 
@@ -104,17 +104,14 @@ function fetchOne(url, callback){
 function fetchMulti(urls, callback, cat, num){
 
 	var myHeaders = new Headers();
-
 	var myInit = { method: 'GET',
 	               headers: myHeaders,
 	               // mode: 'cors',
 	               cache: 'default' };
 
 	fetches = []
-	for (const url of urls){
-		console.log("ADD:", url);
+	for (const url of urls)
 		fetches.push(fetch(url, myInit))
-	}
 
 	Promise.all(fetches)
 	.then( responses => Promise.all(responses.map(response => response.json())) )
@@ -125,6 +122,7 @@ function fetchMulti(urls, callback, cat, num){
 // --- MODAL ---
 
 function get_modal_film(id){
+
 	fetchOne(api_url+"titles/"+id, collect_display_modal);
 }
 
@@ -138,7 +136,7 @@ function collect_display_modal(json){
 	setModalField(json, 'date_published');
 	setModalField(json, 'directors');
 	setModalField(json, 'actors');
-	setModalField(json, 'duration');
+	setModalField(json, 'duration', null, timeFormat);
 	setModalField(json, 'countries');
 	setModalField(json, 'worldwide_gross_income', null, currencyFormat);
 	setModalField(json, 'long_description');
@@ -160,9 +158,11 @@ function setModalField(json, field_name, id=null, format=null){
 		{
 			let value = json[field_name] // Get value
 
-			if(Array.isArray(value)) value = value.join(", "); // Array to str
+			if(Array.isArray(value)) 
+				value = value.join(", "); // Array to str
 
-			if(format != null && value != null) value = format(value); // Optional formatting
+			if(format != null && value != null)
+				value = format(value); // Optional formatting
 
 			retv = value;
 		}
@@ -177,9 +177,16 @@ function setModalField(json, field_name, id=null, format=null){
 // --- UTILS ---
 
 function currencyFormat(num) {
-	console.log("num:", num);
 	return '$' + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
+
+function timeFormat(num) {
+	hours = Math.floor(num/60).toString().padStart(2,0);
+	minutes = (num%60).toString().padStart(2,0);
+	return hours + ":" + minutes;
+}
+
+// --- INIT ---
 
 window.onload = function() {
 
@@ -203,7 +210,11 @@ window.onload = function() {
 	// console.log(vignettes_btns);
 	
 	// --- Set Best film btn ---
-	document.getElementById("modal__open").onclick = function() {
+	// document.getElementById("modal__open").onclick = function() {
+	//	get_modal_film(data['first']['id'])
+	// }
+
+	document.getElementsByClassName("poster")[0].onclick = function() {
 		get_modal_film(data['first']['id'])
 	}
 
