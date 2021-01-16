@@ -96,6 +96,7 @@ body
 	height:400px;
 
 	display:flex;
+	overflow: auto;
 }
 
 .poster--yellow_border
@@ -129,11 +130,6 @@ body
 {
   	cursor: pointer;
 	margin:20px 0 0 0;
-}
-
-.poster_button-play
-{
-
 }
 
 /* --- CATEGORIES --- */
@@ -179,7 +175,7 @@ body
 	}
 }
 
-%img-hor {
+%img_hor {
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);
@@ -188,18 +184,18 @@ body
 
 %right_arrow
 {
-	// border: 1px solid Red;
 	background-image: url("../medias/arrow-right-white.png");
 	background-repeat: no-repeat;
 	background-size: $arrow_width $vignette_height;
 	width: $arrow_width;
 	height: $vignette_height;
+	cursor:pointer;
 }
 
 .carrousel__left_arrow
 {
 	@extend %right_arrow;
-	@extend %img-hor;
+	@extend %img_hor;
 }
 .carrousel__right_arrow
 {
@@ -218,6 +214,22 @@ body
 
 	@include mobile-only{
 		width: $vignette_width/2;
+	}
+
+	position:relative;
+
+	& div {
+		width:100%;
+		background-color: rgba(255,255,255,0.75);
+		color:black;
+		text-align:center;
+		overflow: hidden;
+  		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		position:absolute;
+		bottom:0;
+		
 	}
 }
 

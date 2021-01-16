@@ -49,7 +49,8 @@ function fill_category(cat){
 	let index = 0;
 	for(result of data[cat]){
 		document.getElementById(cat+"_"+index).style.backgroundImage="url("+result['image_url']+")";
-		document.getElementById(cat+"_"+index).innerHTML= result['title'];
+		//document.getElementById(cat+"_"+index).innerHTML = result['title'];
+		document.querySelector("#"+cat+"_"+index+" div").innerHTML = result['title'];
 		index ++;
 	}
 }
