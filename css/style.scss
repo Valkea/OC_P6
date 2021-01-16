@@ -165,7 +165,8 @@ body
 
 .carrousel__scroll
 {
-	overflow-x: scroll;
+	// overflow-x: scroll;
+	overflow-x: hidden;
 	flex:1;
 }
 
