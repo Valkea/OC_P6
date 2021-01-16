@@ -82,7 +82,6 @@ function open_vignette(ref) {
 	const regExpr = /(cat_[\d+])_([\d+])*/
 	const match = ref.match(regExpr);
 
-	console.log("TEST:", data[match[1]][match[2]]['id'])
 	get_modal_film(data[match[1]][match[2]]['id'])
 }
 
@@ -129,7 +128,6 @@ function get_modal_film(id){
 }
 
 function collect_display_modal(json){
-	console.log(json);
 	
 	document.getElementById("modal-image").src = json['image_url'];
 
@@ -168,6 +166,9 @@ function setModalField(json, field_name, id=null, format=null){
 
 			retv = value;
 		}
+
+		if(retv == null )
+			retv = " -- ";
 
 		document.getElementById("modal-"+id).innerHTML = retv;
 
