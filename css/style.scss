@@ -12,9 +12,11 @@ $header_height : 100px;
 $logo_height : $header_height;
 $logo_width : $logo_height*1.3906;
 
+$link_color: #FFF;
+$back_color: #000;
 
 $breakpoints : (
-    mobile: 500px,
+    mobile: $main_column_width,
 );
 
 @mixin mobile-only {
@@ -27,8 +29,8 @@ body
 {
 	height: 100%;	
 	margin:0px;
-	background-color: #000;
-	color: rgb(255,255,255);
+	background-color: $back_color;
+	color: $link_color;
 }
 
 footer
@@ -60,12 +62,16 @@ footer
 {
 	display:flex;
 	justify-content: space-between;
-	height:$header_height;
-	width:$main_column_width;
 	position:fixed;
 	z-index:1;
 	top:0px;
-	background-color: #000;
+	background-color: $back_color;
+
+	height:$header_height;
+	width:$main_column_width;
+	@include mobile-only{
+		width: 100%;
+	}
 }
 
 
@@ -85,7 +91,6 @@ footer
 	display:flex;
 	justify-content: center;
 	align-items: center;
-	// border: 1px solid rgb(0,255,0);
 	padding:5px;
 
 	&__space
@@ -94,6 +99,13 @@ footer
 	}
 }
 
+a {
+  	color: $link_color;
+
+	&:visited {
+  		color: $link_color;
+	}
+}
 
 /* --- BEST FILM --- */
 
@@ -127,6 +139,12 @@ footer
 		flex: 2;
 		padding-left:20px;
 		@extend %poster_background_opacity;
+	}
+
+	&__desc
+	{	
+		max-height: 140px;
+		overflow: hidden;
 	}
 		
 	&__title
@@ -179,9 +197,9 @@ footer
 }
 
 %mirrorH {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
+    // -moz-transform: scaleX(-1);
+    // -o-transform: scaleX(-1);
+    // -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
 }
 
@@ -270,7 +288,7 @@ footer
 {
        	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
-  	z-index: 1; /* Sit on top */
+  	z-index: 2; /* Sit on top */
   	left: 0;
   	top: 0;
   	width: 100%; /* Full width */
