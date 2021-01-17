@@ -78,7 +78,6 @@ function collect_display_first(json){
 // --- VIGNETTES ---
 
 function open_vignette(ref) {
-
 	const regExpr = /(cat_[\d+])_([\d+])*/
 	const match = ref.match(regExpr);
 
@@ -200,7 +199,7 @@ window.onload = function() {
 	let close_btn = document.getElementsByClassName("modal__close")[0];
 
 	// --- Set onclick actions to open the modals ---
-	let elems = document.getElementsByTagName("*");
+	let elems = document.getElementsByTagName("div");
 	for (let i=0, m=elems.length; i<m; i++) {
     		if (elems[i].id && elems[i].id.startsWith("cat_")) {
 			elems[i].onclick = function(){

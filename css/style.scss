@@ -31,6 +31,12 @@ body
 	color: rgb(255,255,255);
 }
 
+footer
+{
+	text-align: center;
+	padding-bottom:250px;
+}
+
 .main_column
 {
 	width: $main_column_width;
@@ -38,6 +44,14 @@ body
 	@include mobile-only{
 		width: 100%;
 	}
+
+	margin-top:$header_height + 10;
+}
+
+#top, #cat_anchor
+{
+	position:relative;
+	top:-$header_height - 10;
 }
 
 /* --- HEAD --- */
@@ -47,12 +61,13 @@ body
 	display:flex;
 	justify-content: space-between;
 	height:$header_height;
+	width:$main_column_width;
+	position:fixed;
+	z-index:1;
+	top:0px;
+	background-color: #000;
 }
 
-.header--yellow_border
-{
-	border: 2px solid Yellow;
-}
 
 .logo
 {
@@ -98,6 +113,8 @@ body
 
 	display:flex;
 	overflow: auto;
+
+	border-radius: 20px;
 }
 
 .poster--yellow_border
@@ -148,11 +165,15 @@ body
 .category--green_border
 {
 	border: 2px solid rgb(0,255,0);
+	border-radius: 20px;
+	padding-bottom: 15px;
 }
 
 .category--orange_border
 {
 	border: 2px solid rgb(255,112,0);
+	border-radius: 20px;
+	padding-bottom: 15px;
 }
 
 .carrousel
