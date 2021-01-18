@@ -1,17 +1,22 @@
 # JustStreamIt
 
-JustSteamIt is a simple web-page used to display some informations extracted from OCMovies-API-EN-FR in order to practice interactions with APIs.
+JustSteamIt is a simple web-page used to display some informations extracted from [OCMovies-API-EN-FR](https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR) in order to practice interactions with APIs.
 
 ## Usage
 
 This website can be used on any regular hosting service or locally
 
+## Remote hosting
+In order to run this project on a regular hosting service, you will need follow the 'Local hosting' instructions bellow (on the remote server obviously), or simply upload the html/js/css files if you plan to run the API locally.
+
+In either cases, you will need to edit the js/script.js file to change the base API url const.
+
 ## Local hosting
 
 ### Install OCMovies-API
-let's install OCMovies-API-EN-FR API using the instructions provided on the [github page](https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR).
+let's install OCMovies-API-EN-FR API using the instructions provided on the [github page](https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR) (below is one of the two provided install methods).
 
-1. Clone this repository using
+1. Clone the API repository using
 ```bash
 >>> git clone https://github.com/pythonmentor/ocmovies-api.git
 ```
@@ -66,8 +71,8 @@ or
 >>> py manage.py runserver
 ```
 
-### HTTTP server
-open ANOTHER terminal, navigate to the directory in which you installed/cloned this project and run the following command 
+### HTTP server
+open ANOTHER terminal, navigate to the directory in which you installed/cloned this website and run the following command 
 ```bash
 >>> python3 -m http.server 7800 --bind 127.0.0.1
 or
@@ -75,11 +80,11 @@ or
 or
 >>> py -m http.server 7800 --bind 127.0.0.1
 ```
-This will run the contents of the directory on a local web server, on port 7800.
+This will run the contents of the directory on port 7800 of the local web server.
 
 
 ## Use the website
-once both services are started, you can consult the webpage at the following address: http://127.0.0.1:7800
+once both services running, you can consult the webpage using the following address: http://127.0.0.1:7800
 
 ## Edit content / style / requests
 in order to modify the website, you can directly edit the html, css and js files.
