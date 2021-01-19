@@ -89,9 +89,13 @@ once both services running, you can consult the webpage using the following addr
 ## Edit content / style / requests
 in order to modify the website, you can directly edit the html, css and js files.
 
-However, the Sass pre-processor was used to handle the CSS nesting. So if you really intend to change anything, you should use Sass too. The scss file can be found in the css folder and in order to generate a new css whenever you modify the file, you can run this command (from the root folder of the website)
+However, the Sass pre-processor was used to handle the CSS nesting. So if you really intend to change anything, you should use Sass too.
+
+The scss file can be found in the css folder and in order to generate a new css whenever you modify the file, you need to install [Sass](https://sass-lang.com/install) and then run it using this command
 ```bash
 >>> sass --watch css/style.scss css/style.css
+or
+>>> PATH_TO_SASS/sass --watch css/style.scss css/style.css
 ```
 
 ## License
