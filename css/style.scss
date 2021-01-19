@@ -56,6 +56,11 @@ footer
 	top:-$header_height - 10;
 }
 
+time
+{
+	font-weight:normal;
+}
+
 /* --- HEAD --- */
 
 .header
@@ -324,15 +329,21 @@ a {
 	  	background-color: #000;
 		top:50%;
 	
-	  	margin: auto; /* 15% from the top and centered */
+	  	margin: auto;
 	  	padding: 20px;
 	  	border: 1px solid #888;
-	  	width: 80%; /* Could be more or less, depending on screen size */
+	  	width: 80%;
 		display:flex;
 		flex-wrap: wrap;
 		position: relative;
   		transform: translateY(-50%);
 		border-radius: 20px;
+		@include mobile-only{
+  			transform: translateY(0);
+			top:0px;
+	  		width: auto;
+			border-radius: 0px;
+		}
 	}
 	
 	&__image // 182 x 268
