@@ -3,23 +3,23 @@
  *
  * --- CAT PROCESS ---
  *
- * get_best_cat(num, cat)
+ * getBestCat(num, cat)
  * 	# shortcut to fetch the 'num' first films from given category 
- * save_data(num, cat, fetches, callback)
+ * saveData(num, cat, fetches, callback)
  * 	# save the fetched data to the global 'data' map
  *
  * --- MAIN DISPLAY ---
  *
- * fill_category(cat)
+ * fillCategory(cat)
  * 	# set the categories thumbnails' images & titles
- * fill_category_tops()
+ * fillCategoryTops()
  * 	# set the 'top films' category's image & title
- * fill_top_film(json)
+ * fillTopFilm(json)
  * 	# set the 'top film' image & title
  *
  * --- CAT BUTTONS ---
  *
- * open_vignette(ref) 
+ * openVignette(ref) 
  * 	# parse the given ID to know which thumbnail was clicked
  *
  * --- FETCH --- 
@@ -31,9 +31,9 @@
  *
  * --- MODAL ---
  *
- * get_modal_film(id)
+ * getModalFilm(id)
  * 	# shortcut to fetch one film
- * collect_display_modal(json)
+ * setModalFields(json)
  * 	# collect and display the modal content
  * setModalField(json, field_name, id=null, format=null)
  * 	# actually set the modal content with some controls
@@ -56,39 +56,39 @@
  * --- TOP FILM & 7 OTHER BEST FILMS ---
  *
  * window.onload
- *     => get_best_cat(8, 'cat_0')
+ *     => getBestCat(8, 'cat_0')
  *         => fetchMulti
- *             => save_data
- *                 => fill_category_tops
+ *             => saveData
+ *                 => fillCategoryTops
  *                     => fetchOne
- *                         => fill_top_film
- *                     => fill_category
+ *                         => fillTopFilm
+ *                     => fillCategory
  *
  * --- CATEGORIES ---
  *
  * window.onload
- *     => get_best_cat(7, 'cat_1')
+ *     => getBestCat(7, 'cat_1')
  *         => fetchMulti
- *             => save_data
- *                 => fill_category(cat)
+ *             => saveData
+ *                 => fillCategory(cat)
  *
  * --- MODAL TOP ---
  *
  * window.onload
  *     => onclick
- *         => get_modal_film(data['first']['id'])
+ *         => getModalFilm(data['first']['id'])
  *             => fetchOne
- *                 => collect_display_modal
+ *                 => setModalFields
  *                     => setModalField
  *
  * --- MODAL CAT THUMB ---
  *
  * window.onload
  *     => onclick
- *         => open_vignette(elems[i].id)
- *             => get_modal_film(data['first']['id'])
+ *         => openVignette(elems[i].id)
+ *             => getModalFilm(data['first']['id'])
  *                 => fetchOne
- *                     => collect_display_modal
+ *                     => setModalFields
  *                         => setModalField
  */
 
@@ -106,7 +106,7 @@ const data = {'cat_0':[], 'cat_1':[], 'cat_2':[], 'cat_3':[]}
  * @param  {Number} num [The number of entries to collect]
  * @param  {String} cat [The local category name (cat_0 to cat_3)]
  */
-function get_best_cat(num, cat){
+function getBestCat(num, cat){
 	let results_per_page = 5;
 	let num_pages = Math.ceil(num/results_per_page);
 
@@ -122,7 +122,7 @@ function get_best_cat(num, cat){
 		urls.push(api_url+"titles/?sort_by=-imdb_score,-votes%2C-votes&genre="+cat_names.get(cat)+"&page="+i);
 	}
 
-	fetchMulti(urls, save_data, cat, num)
+	fetchMulti(urls, saveData, cat, num)
 }
 
 /**
@@ -131,7 +131,7 @@ function get_best_cat(num, cat){
  * @param  {String} cat [The local category name (cat_0 to cat_3)]
  * @param  {JSON Object} fetches [The JSON data to save for the provided 'cat']
  */
-function save_data(num, cat, fetches){
+function saveData(num, cat, fetches){
 
 	console.log(typeof fetches);
 
@@ -147,9 +147,9 @@ function save_data(num, cat, fetches){
 	}
 
 	if(cat == 'cat_0'){
-		fill_category_tops()	
+		fillCategoryTops()	
 	} else {
-		fill_category(cat)
+		fillCategory(cat)
 	}
 }
 
@@ -159,7 +159,7 @@ function save_data(num, cat, fetches){
  * Set the categories thumbnails' images & titles
  * @param  {String} cat [The local category name (cat_0 to cat_3)]
  */
-function fill_category(cat){
+function fillCategory(cat){
 	
 	let index = 0;
 	for(result of data[cat]){
@@ -173,20 +173,20 @@ function fill_category(cat){
 /**
  * Set the 'top films' category's image & title
  */
-function fill_category_tops(){
+function fillCategoryTops(){
 
 	data['first'] = data['cat_0'].shift()
-	fill_category( 'cat_0' )
+	fillCategory( 'cat_0' )
 
 	first_id = data['first']['id']
-	fetchOne(api_url+"titles/"+first_id, fill_top_film);
+	fetchOne(api_url+"titles/"+first_id, fillTopFilm);
 }
 
 /**
  * Set the 'top film' image & title
  * @param  {JSON Object} json [A JSON containing the data required to fill the fields]
  */
-function fill_top_film(json){
+function fillTopFilm(json){
 	
 	document.getElementsByClassName("poster")[0].style.backgroundImage="url("+json['image_url']+")";
 	document.getElementsByClassName("poster__image")[0].src= json['image_url'];
@@ -201,11 +201,11 @@ function fill_top_film(json){
  * Parse the given ID to know which thumbnail was clicked
  * @param  {String} ref [The #id of the clicked button with a cat_x_x format]
  */
-function open_vignette(ref) {
+function openVignette(ref) {
 	const regExpr = /(cat_[\d+])_([\d+])*/
 	const match = ref.match(regExpr);
 
-	get_modal_film(data[match[1]][match[2]]['id'])
+	getModalFilm(data[match[1]][match[2]]['id'])
 }
 
 // --- FETCH ---
@@ -261,16 +261,16 @@ function fetchMulti(urls, callback, cat, num){
  * Shortcut to fetch one film
  * @param  {String} id [The id of the targetted film in the API database]
  */
-function get_modal_film(id){
+function getModalFilm(id){
 
-	fetchOne(api_url+"titles/"+id, collect_display_modal);
+	fetchOne(api_url+"titles/"+id, setModalFields);
 }
 
 /**
  * Collect and display the modal content
  * @param  {JSON Object} json [A JSON containing the data required to fill the fields]
  */
-function collect_display_modal(json){
+function setModalFields(json){
 	
 	document.getElementById("modal-image").src = json['image_url'];
 
@@ -364,18 +364,18 @@ window.onload = function() {
 	for (let i=0, m=elems.length; i<m; i++) {
     		if (elems[i].id && elems[i].id.startsWith("cat_")) {
 			elems[i].onclick = function(){
-				open_vignette(elems[i].id);
+				openVignette(elems[i].id);
 			}
     		}
 	}
 	
 	// --- Set Best film btn ---
 	// document.getElementById("modal__open").onclick = function() {
-	//	get_modal_film(data['first']['id'])
+	//	getModalFilm(data['first']['id'])
 	// }
 
 	document.getElementsByClassName("poster")[0].onclick = function() {
-		get_modal_film(data['first']['id'])
+		getModalFilm(data['first']['id'])
 	}
 
 	// --- Close the modal when clicking (x) ---
@@ -406,8 +406,8 @@ window.onload = function() {
 
 	// --- Load content ---
 	
-	get_best_cat(8, 'cat_0');
-	get_best_cat(7, 'cat_1');
-	get_best_cat(7, 'cat_2');
-	get_best_cat(7, 'cat_3');
+	getBestCat(8, 'cat_0');
+	getBestCat(7, 'cat_1');
+	getBestCat(7, 'cat_2');
+	getBestCat(7, 'cat_3');
 }
